@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Exec=~/Desktop/code_test/yoloV8_picam/script/tx.sh
+Name=tx
+GenericName==tx
+comment=run tx script
+Encoding==UTF-8
+Terminal=true
+Type=Application
+Categories=Application;
