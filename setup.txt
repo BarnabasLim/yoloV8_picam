@@ -1,0 +1,32 @@
+Step 0:
+From raspberry pi to windows
+pscp -r barns@raspberrypibarn.local:/home/barns/Desktop/code_test/yoloV8_picam C:\Users\barns\Desktop\code_test
+
+From windows to raspberry pi
+pscp -r C:\Users\barns\Desktop\code_test wei@raspberrypiwei.local:/home/wei/Desktop/code_test
+
+Step 1:
+Create config.ini file
+"yoloV8_picam\credentials\config.ini"
+
+[Telegram]
+secretToken: <Secret token>
+channelId: <channelId> 
+
+
+Step 2:
+cd code_test
+Creating a python environment
+>python -m venv venv
+
+Activate virtual environment
+>venv\Scripts\activate.bat
+>python -v
+
+>pip install -r code_test/requirements.txt
+
+
+Step 3:
+move scripts in yoloV8_picam\scripts\WORKING to desktop
+cd to the scripts
+chmod u+x rx.sh
