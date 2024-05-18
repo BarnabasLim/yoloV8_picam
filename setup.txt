@@ -3,7 +3,14 @@ From raspberry pi to windows
 pscp -r barns@raspberrypibarn.local:/home/barns/Desktop/code_test/yoloV8_picam C:\Users\barns\Desktop\code_test
 
 From windows to raspberry pi
-pscp -r C:\Users\barns\Desktop\code_test wei@raspberrypiwei.local:/home/wei/Desktop/code_test
+pscp -r C:\Users\barns\Desktop\code_test wei@raspberrypiwei.local:/home/wei/Desktop
+
+Step 0.1:
+<to create setup script>
+Make script executable
+chmod +x ~/Desktop/code_test/yoloV8_picam/scripts/setup.sh
+Run script
+~/Desktop/code_test/yoloV8_picam/scripts/setup.sh
 
 Step 1:
 Create config.ini file
