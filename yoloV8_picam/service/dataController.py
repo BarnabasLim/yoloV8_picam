@@ -43,7 +43,7 @@ class DataController:
 		self.update_cu_text()
 		if not cv2.imwrite(self.img_path, img):
 			raise Exception("Could not write image")
-		#cat(self.img_path)
+		cat(self.img_path)
 		if(self.telegramBot):
 			self.telegramBot.addImg(img_path=self.img_path, text="motion detected\n"+self.cumulativeText)
 		os.remove(self.img_path)
@@ -63,7 +63,7 @@ class DataController:
 					self.update_img_path()
 					if not cv2.imwrite(self.img_path, img):
 						raise Exception("Could not write image")
-					#cat(self.img_path)
+					cat(self.img_path)
 					if(self.telegramBot):
 						self.telegramBot.addImg(img_path=self.img_path, text=self.text+'\n'+self.cumulativeText)
 					os.remove(self.img_path)
