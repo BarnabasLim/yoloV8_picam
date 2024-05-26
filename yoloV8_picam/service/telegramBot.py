@@ -25,3 +25,10 @@ class TelegramBot:
         except Exception as e:
             print(e, 'here')
             return False
+    
+    def sendMessage(self, text):
+        try:
+            self.bot.send_message(text=text, chat_id=self.channel_id)
+        except Exception as e:
+            print(e, 'here')
+            return False

@@ -119,3 +119,9 @@ class DataController:
 		return rel_obj
 				
 		
+
+	def send_system_alive(self):
+		self.telegramBot.sendMessage("System Alive")
+		print("System Alive")
+
+			

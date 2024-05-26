@@ -6,6 +6,7 @@ from service.nightTime import NightTime
 from service.yoloDetector import YoloDetector
 from picamera2 import Picamera2
 from ultralytics import YOLO
+from datetime import datetime, time
 #import traceback
 
 import numpy as np
@@ -73,6 +74,18 @@ nightTime=NightTime()
 curr_img_main=picam2.capture_array("main")
 prev_img_main=curr_img_main
 
+#system check
+interval=10
+
+curr_interval=int(datetime.now().minute/interval)
+prev_interval=curr_interval
+
+def CheckAlive():
+    if(curr_interval!=prev_interval):
+        if dataController:
+            dataController.send_system_alive()
+                    
+
 try:
     while True:
         
@@ -80,7 +93,7 @@ try:
             
             #motion_detected mode
             if curr_time-start_time<120:
-                if nightTime.isNight() or light_mode:
+                if light_mode:
                     irFlood.on_ir()
                 #20 sec object detection mode
                 curr_time=time.time()
@@ -129,7 +142,14 @@ try:
                 time.sleep(2)
                 print("take before pic")
                 prev_img=picam2.capture_buffer("lores")
+                prev_img_main=picam2.capture_array("main")
         else:
+            
+            #system check
+            curr_interval=int(datetime.now().minute/interval)
+            CheckAlive()
+            prev_interval=curr_interval
+            
             #motion not detected mode
             curr_img=picam2.capture_buffer("lores")
 
@@ -166,6 +186,7 @@ try:
                 del dataController
                 dataController=None
                 dataController=DataController(True, False, debug_mode)
+                
                 
                 img=picam2.capture_array("main")
                 img=cv2.cvtColor(img,cv2.COLOR_RGBA2RGB)
