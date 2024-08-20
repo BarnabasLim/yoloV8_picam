@@ -3,6 +3,7 @@ import io
 import PIL.Image as Image
 import re
 import os
+import cv2
 def write_binary_to_jpg(file_path,content):
     try:
         write_path=file_path.replace("captured_vehicle/", "/home/barns/Desktop/")
@@ -12,6 +13,9 @@ def write_binary_to_jpg(file_path,content):
         with open(write_path,'wb') as file:
             content=eval(content)
             file.write(content)
+        #image show
+        image=cv2.imread(write_path) 
+        cv2.imshow("Detection", image)
         print(f"jpg success")
     except  Exception as e:
         print("Error writing jpg :",e)
