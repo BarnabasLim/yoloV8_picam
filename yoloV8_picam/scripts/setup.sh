@@ -3,7 +3,7 @@
 #test script
 echo Hello world lets setup
 
-cd ~/Desktop/code_text
+cd ~/Desktop/code_test
 
 #Make required dir for imagtes
 mkdir -p ~/Desktop/code_test/captured_vehicle
